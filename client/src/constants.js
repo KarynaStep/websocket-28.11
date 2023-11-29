@@ -1,0 +1,8 @@
+const CONSTANTS = {
+  WEBSOCKET_EVENTS: {
+    NEW_MESSAGE: "NEW_MESSAGE",
+    ERR_MESSAGE: "ERR_MESSAGE",
+  },
+};
+
+export default CONSTANTS
