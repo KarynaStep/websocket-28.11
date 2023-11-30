@@ -1,21 +1,19 @@
 const express = require('express');
 const cors = require('cors');
-const {Message, User} = require('./models')
+
+const { getAllMessages } = require('./controllers/messages.controller');
+const { createOrFindUser } = require('./controllers/user.controller');
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
-app.get('/', async (req, res, next) => {
-  try {
-    const messages = await Message.find()
-    res.status(200).send({ data: messages });
-  } catch (error) {
-    next(error);
-  }
-});
+app.get('/', getAllMessages);
+app.post('/users', createOrFindUser);
 
 app.use((err, req, res, next) => {
+  console.log('err---->>>', err);
   res.status(500).send({ errors: [err] });
 });
 

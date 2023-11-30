@@ -1,26 +1,25 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   login: {
     type: String,
     required: true,
     validate: {
-      validator: (value) => /[a-z0-9]{3, 32}/.test(value),
+      validator: (value) => /[A-z0-9]{3,32}/.test(value),
       message: (props) => `${props.value} is bad login!`,
     },
   },
   email: {
     type: String,
     required: true,
-    unique: true,
     validate: {
-      validator: (value) => /[a-z0-9]{3, 32}@gmail\.com/.test(value),
+      validator: (value) => /[A-Za-z0-9]{3,32}/.test(value),
       message: (props) => `${props.value} is bad login!`,
     },
   },
-  message: [{ type: mongoose.Shema.Types.ObjectId, ref: "Message" }],
+  messages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Message' }],
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

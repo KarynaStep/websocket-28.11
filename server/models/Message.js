@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const messageSchema = new mongoose.Schema({
   content: {
     type: String,
@@ -11,10 +11,10 @@ const messageSchema = new mongoose.Schema({
   user: {
     required: true,
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
   },
 });
 
-const Message = mongoose.model("Message", messageSchema);
+const Message = mongoose.model('Message', messageSchema);
 
 module.exports = Message;
